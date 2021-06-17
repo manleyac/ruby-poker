@@ -50,7 +50,7 @@ class Game
             puts player.status
             print "Bet size: "
             bet = gets.to_f
-            @pot.add(player.stack.bet(bet))
+            @pot.add(player.stack.withdraw(bet))
         end
     end
 
