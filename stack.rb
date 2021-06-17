@@ -11,7 +11,7 @@ class Stack
         @total_chips += amount
     end
 
-    def bet(num)
+    def withdraw(num = 10)
         raise InvalidBetAmount if num < 0 || (@total_chips - num) < 0
 
         @total_chips -= num

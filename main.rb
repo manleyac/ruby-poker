@@ -1,9 +1,9 @@
 require "./game.rb"
 
+NUM_PLAYERS = 2
+
 def create_players(game)
-    print "Enter number of players: "
-    num_players = gets.to_i
-    for i in 1..num_players
+    for i in 1..NUM_PLAYERS
         print "Enter player #{i}'s name: "
         name = gets.chomp
         print "Hello, #{name}. Enter your chip total: "

@@ -18,13 +18,22 @@ class StackTest < Minitest::Test
 
     describe "#bet" do
 
+        describe "when no arg is given" do
+            it "defaults to a bet of 10" do
+                @stack = Stack.new
+                @stack.add(25)
+
+                assert_equal(10, @stack.withdraw)
+            end
+        end
+
         describe "when num arg is greater than or equal to total" do
             it "throws an error and doesn't modify stack total" do
                 @stack = Stack.new
                 @stack.add(50)
 
                 assert_raises Stack::InvalidBetAmount do
-                    @stack.bet(75)
+                    @stack.withdraw(75)
                 end
                 assert_equal(50, @stack.total_chips)
             end
@@ -35,7 +44,7 @@ class StackTest < Minitest::Test
                 @stack = Stack.new
                 @stack.add(50)
                 assert_raises Stack::InvalidBetAmount do
-                    @stack.bet(-20)
+                    @stack.withdraw(-20)
                 end
                 assert_equal(50, @stack.total_chips)
             end
@@ -48,7 +57,7 @@ class StackTest < Minitest::Test
             @stack = Stack.new
             @stack.add(100)
 
-            assert_equal(25, @stack.bet(25))
+            assert_equal(25, @stack.withdraw(25))
             assert_equal(75, @stack.total_chips)
         end
     end
