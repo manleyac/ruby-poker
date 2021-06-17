@@ -3,20 +3,13 @@ require_relative "../deck.rb"
 require_relative "../card.rb"
 
 class DeckTest < Minitest::Test
-    # def setup
-    #     @deck = Deck.new
-    # end
-
-    # def test_deal_hand
-    #     assert_equal( Array, @deck.deal_hand.class)
-    # end
 
     describe Deck do
         before do
             @deck = Deck.new
         end
 
-        describe "when initialized" do
+        describe "#initialized" do
             it "creates instances of Card" do
                 @deck.cards.all? { |card| assert_instance_of(Card, card)}
             end
