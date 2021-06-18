@@ -5,6 +5,7 @@ class Seat
 
     def initialize
         @hand = Hand.new
+        @player = nil
     end
 
     def add_player(player)

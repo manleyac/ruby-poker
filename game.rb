@@ -1,26 +1,32 @@
-require "./deck.rb"
-require "./player.rb"
-require "./pot.rb"
+require "./round.rb"
 require "./seat.rb"
 
 class Game
-    ROUNDS = 3
+    class NoAvailableSeat < StandardError; end
 
-    def initialize
-        @deck = Deck.new
-        @pot = Pot.new
-        @players = []
+    NUM_PHASES = 3
+    attr_reader :seats, :blind_size, :round
+
+    def initialize(num_seats, blind)
+        @dealer = 0
+        @blind_size = blind
+        @seats = Array.new(num_seats) {Seat.new}
     end
 
-    # def start
-    #     play_hand
-    # end
+    def start_round
+        @round = Round.new(@seats, @blind_size, NUM_PHASES)
+        @round.start
+    end
 
-    # def add_player(name, chip_total)
-    #     new_player = Player.new(name)
-    #     new_player.stack.add(chip_total)
-    #     @players.append(new_player)
-    # end
+    def assign_seat(player)
+        @seats.each do |seat|
+            if seat.is_empty?
+                seat.add_player(player)
+                return
+            end
+        end
+        raise NoAvailableSeat
+    end
 
     # def play_hand
     #     @players.each { |player| player.accept_hand(@deck.deal_hand) }
