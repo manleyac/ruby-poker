@@ -1,5 +1,5 @@
 class Hand
-    attr_accessor :playing_cards
+    attr_reader :playing_cards
 
     def initialize
         @playing_cards = []
@@ -15,7 +15,7 @@ class Hand
 
     def show_hand
         card_display_values = []
-        @playing_cards.each { |card| card_display_values.push(card.show_card)}
+        playing_cards.each { |card| card_display_values.push(card.show_card)}
         card_display_values.join(" ")
     end
 end
