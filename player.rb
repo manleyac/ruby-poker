@@ -9,6 +9,11 @@ class Player
         @stack = Stack.new
     end
 
+    def bet(bet_size)
+        bet = @stack.withdraw(bet_size)
+        bet
+    end
+
     def status
         "#{@name} has $#{@stack.total_chips}"
     end
