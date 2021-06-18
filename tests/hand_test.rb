@@ -12,7 +12,7 @@ class HandTest < Minitest::Test
         end
 
         describe "#take_cards" do
-            it "accepts an array of Cards" do
+            it "accepts an array of Cards and assigns it to @playing_cards" do
                 @hand.take_cards(@deck.deal_hand)
 
                 @hand.playing_cards.all? { |card| assert_instance_of(Card, card)}

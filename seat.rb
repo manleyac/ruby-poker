@@ -4,7 +4,6 @@ class Seat
     attr_accessor :player, :hand
 
     def initialize
-        @player = nil
         @hand = Hand.new
     end
 
@@ -19,6 +18,7 @@ class Seat
     end
 
     def is_empty?
-        @player == nil
+        @player.nil?
     end
+
 end

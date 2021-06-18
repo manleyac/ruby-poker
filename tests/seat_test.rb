@@ -9,6 +9,7 @@ class SeatTest < Minitest::Test
         before do
             @seat = Seat.new
             @player = Player.new("test")
+
         end
 
         describe "#add_player" do
